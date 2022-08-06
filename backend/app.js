@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const sauceRoutes = require('./routes/sauce');
+const userRoutes = require('./routes/user');
 
-
-mongoose.connect('mongodb+srv://passwordd:AmrOpenClassrooms@clusterhottakes.6vzg70w.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://AmrDevProjetSix:password@clusterhottakes.6vzg70w.mongodb.net/?retryWrites=true&w=majority',
 { useNewUrlParser: true,
     useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -23,5 +23,5 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use('/api/sauces', sauceRoutes);
-
+app.use('/api/auth', userRoutes);
 module.exports = app;
